@@ -1,1 +1,59 @@
+AWS Storage Services  
+
+1. Object Storage — Amazon S3 (Simple Storage Service)
+Store any type of file (images, videos, PDFs, backups) as objects in buckets.   
+
+Feature                      Detail
+
+Type                         Flat storage (no folders, just keys)
+Access                       Via URL / API
+Scalability                  Unlimited
+Durability                   99.999999999% (11 9s)
+
+S3 Storage Classes (When to use what):
+
+S3 Standard: Frequently accessed data (websites, apps)
+S3 Intelligent-Tiering: Unknown or changing access patterns  
+S3 Standard-IA (Infrequent Access): Accessed once a month (backups)
+S3 Glacier: Long-term archiving, retrieved in minutes
+S3 Glacier Deep Archive: Rarely accessed, cheapest, retrieved in hours.
+
+ Use S3 when: storing media files, hosting static websites, data lakes, backups, and logs.
+
+2. Block Storage — Amazon EBS (Elastic Block Store)
+Think of EBS like a hard drive attached to your EC2 server. It stores data in fixed-size blocks, just like your laptop's SSD.
+
+Feature                     Detail
+Attached to                 EC2 instances only
+Access                      Like a local disk
+Persistence                 Data stays even if EC2 stops
+Type                        SSD or HDD-based
+
+Use EBS when: running databases, OS storage for EC2, applications needing low-latency disk access
+
+3. File Storage — Amazon EFS (Elastic File System) & FSx
+Think of EFS like a shared network drive — multiple servers can access the same files simultaneously.  
+
+Feature                      Detail
+Type                         Managed NFS (Network File System)
+Access                       Multiple EC2s at the same time
+OS                           SupportLinux only
+Scaling                      Auto-scales as data grows
+
+Use EFS when: multiple EC2 instances need shared access to same files (web servers sharing assets, ML training data)
+
+
+other services:
+AWS Snow Family (Snowball, Snowcone, Snowmobile)
+Physical devices to transfer massive amounts of data to AWS when the internet upload is too slow. Imagine shipping a hard drive to Amazon!  
+
+
+Need to store files/media/backups?         → S3
+Need a hard disk for your EC2?             → EBS
+Multiple servers sharing same files?       → EFS
+Windows file sharing?                      → FSx for Windows
+High-performance computing storage?        → FSx for Lustre
+Hybrid (on-prem + cloud)?                 → Storage Gateway
+Transferring petabytes of data?            → Snowball
+
 
