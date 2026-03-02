@@ -1,1 +1,37 @@
+AWS VPC (Virtual Private Cloud)  
 
+Think of VPC as your own private neighborhood inside AWS. Just like a gated community has its own roads, security guards, and rules — VPC gives you an isolated section of the AWS cloud where you control everything: who gets in, who gets out, and how traffic flows.   
+
+🔑 Key Components
+1. Subnets
+Sub-divisions inside your VPC — like individual plots in your neighborhood.
+
+Public Subnet → accessible from the internet (e.g., web servers)
+Private Subnet → hidden from the internet (e.g., databases)
+
+2. Internet Gateway (IGW)
+The main gate of your VPC. It allows resources in public subnets to communicate with the internet. Without it, nothing gets in or out.
+3. Route Tables
+Like road maps inside your VPC — they define where network traffic should go. Each subnet follows a route table to decide how to direct its traffic.
+4. NAT Gateway
+Allows private subnet resources to access the internet (e.g., for updates) without being directly exposed to it. One-way door — outbound only.
+5. Security Groups
+Act as a firewall for individual instances (like EC2). You define what inbound/outbound traffic is allowed at the server level.  
+(Security groups are stateful. This means that if an inbound request is permitted, the corresponding outbound response is automatically allowed, regardless of outbound security rules. They operate at the instance level, allow only "allow" rules, and track the state of active connections.    
+6. Network ACLs (Access Control Lists)
+A firewall at the subnet level — an extra layer of security that filters traffic entering or leaving a subnet.  
+(NACLs are  stateless. This means they do not track the state of connections; they evaluate inbound and outbound traffic independently based on rules. As a result, you must explicitly configure both inbound and outbound rules to allow return traffic.)  
+7. VPC Peering
+Let's two VPCs talk to each other privately, even across different AWS accounts — like connecting two private neighborhoods with a private road.
+8. Elastic IP
+A static, fixed public IP address you can attach to your resources, so the address doesn't change even if you restart the server.     
+
+Internet
+    ↓
+Internet Gateway
+    ↓
+Public Subnet  →  (Web Servers / Load Balancers)
+    ↓
+NAT Gateway
+    ↓
+Private Subnet →  (Databases / Backend Servers)
