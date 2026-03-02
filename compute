@@ -1,1 +1,14 @@
 
+compute: it is on-demand, virtualized processing power (CPU), memory (RAM), and storage provided over the internet, provided by various cloud service providers (AWS, Azure, GCP).  
+
+EC2 (Elastic Compute Cloud)
+Think of EC2 as renting a computer in the cloud. You can choose its size, OS, and power, and pay only for the time you use it — like renting a hotel room instead of buying a house.
+
+Lambda
+Lambda lets you run code without managing any server at all. You upload your function, and AWS runs it automatically whenever triggered (e.g., a button click or file upload). You're billed only for the milliseconds your code actually runs.
+
+Auto Scaling
+Auto Scaling automatically adds or removes EC2 servers based on traffic. If your app gets a sudden spike in users, it spins up more servers; when traffic drops, it shuts them down — saving cost and keeping performance smooth.   
+
+Elastic Beanstalk
+Beanstalk is like a smart helper that handles deployment for you. You upload your app code, and AWS automatically sets up the servers, load balancers, and scaling — ideal for developers who don't want to manage infrastructure manually.  
