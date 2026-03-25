@@ -1,0 +1,27 @@
+What is IAM?
+
+IAM (Identity and Access Management) controls who can access AWS and what they can do.
+
+Why is IAM needed?
+1) Prevent unauthorized access
+2) Give limited permissions (least privilege)
+3) Manage users securely
+
+IAM Main Concepts 
+👤 User
+
+A person (you, admin, developer)
+
+👥 Group
+
+Collection of users with the same permissions
+
+📜 Policy
+
+Permission rules written in JSON
+(Example: allow EC2, deny S3)
+
+🎭 Role
+
+Temporary permission given to services
+(EC2 accessing S3)
