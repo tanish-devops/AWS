@@ -1,0 +1,54 @@
+When a user types a website name like www.example.com into a browser, the browser does not understand names — it understands IP addresses. The job of Route 53 is to translate this human-readable domain name into the IP address of the AWS resource where the application is running.
+
+Route 53 is AWS’s managed DNS (Domain Name System) service. It is called Route 53 because DNS traditionally uses port 53, and Route 53 provides highly available, fast, and scalable DNS resolution globally.
+
+In an AWS architecture, Route 53 usually sits at the very top, before the Load Balancer or EC2. When a request comes from a user, Route 53 decides where that request should go, based on routing rules, health checks, and geography. This makes Route 53 not just a DNS service, but also a traffic management service.
+
+Let’s imagine a real flow. A user opens a website. The request first reaches Route 53. Route 53 checks its DNS records and decides which endpoint to return — this endpoint could be an Application Load Balancer, an EC2 instance, an S3 bucket, or even another AWS region. Once Route 53 returns the IP or DNS name, the browser connects directly to that resource. Route 53 itself does not sit in the data path; it only resolves the address.
+
+One of the most powerful features of Route 53 is routing policies. These policies allow Route 53 to intelligently route traffic based on conditions such as health, location, latency, or weights. For example, if you deploy your application in multiple regions, Route 53 can send users to the nearest region to reduce latency, or automatically fail over traffic if one region goes down.
+
+Route 53 also integrates tightly with health checks. It can continuously monitor endpoints like Load Balancers or EC2 instances. If an endpoint becomes unhealthy, Route 53 automatically stops sending traffic to it and redirects users to a healthy endpoint. This makes Route 53 a key service for high availability and disaster recovery.
+
+In simple words, Route 53 is not just about resolving names — it is about deciding the best place for user traffic to go, reliably and securely.
+
+
+
+.
+
+🧠 CORE ROUTE 53 CONCEPTS
+
+> Hosted Zone
+A hosted zone is a container that holds DNS records for a domain. There are two types: public hosted zones, which are accessible from the internet, and private hosted zones, which work only inside a VPC.
+
+> DNS Records
+DNS records define how traffic is routed. Common records include A records for IPv4 addresses, AAAA records for IPv6, and CNAME or Alias records for mapping domain names to AWS resources.
+
+> Alias Records
+Alias records are AWS-specific and are used instead of CNAMEs for AWS services like Load Balancers or CloudFront. They are free and work at the root domain level.
+
+> Health Checks
+Health checks monitor the availability of endpoints. Route 53 uses them to decide whether traffic should be routed to an endpoint or not.
+
+> TTL (Time to Live)
+TTL defines how long DNS responses are cached by clients. Lower TTL means faster changes but more DNS queries; higher TTL means better performance but slower updates.
+
+🚦 ROUTE 53 ROUTING POLICIES (VERY IMPORTANT FOR INTERVIEWS)
+
+> Simple Routing
+Used when there is only one resource. Route 53 returns a single IP address.
+
+> Weighted Routing
+Traffic is distributed based on assigned weights. Commonly used for A/B testing or gradual deployments.
+
+> Latency-Based Routing
+Traffic is routed to the AWS region with the lowest latency for the user.
+
+> Failover Routing
+Used for disaster recovery. Traffic goes to a primary endpoint, and if it fails, Route 53 routes traffic to a secondary endpoint.
+
+> Geolocation Routing
+Routes traffic based on the user’s geographic location, such as country or continent.
+
+> Geoproximity Routing
+Routes traffic based on distance and allows biasing traffic toward specific locations
