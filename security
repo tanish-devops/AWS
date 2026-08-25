@@ -1,1 +1,6 @@
+1. at VPC level
+IP Address Isolation - VPC is assigned by a private CIDR block(which is a IP range) isolated from other virtual networks.
 
+2. at Subnet level
+Public and private subnet concept come, Subnets subdivide the VPC range into availability zones, Public subnets route traffic directly via an Internet Gateway, while private subnets isolate sensitive assets from direct inbound internet paths
+Network Access Control Lists (NACLs): Stateless virtual firewalls attached to subnets. NACLs evaluate explicit allow and deny rules for inbound and outbound traffic hitting the subnet boundary
